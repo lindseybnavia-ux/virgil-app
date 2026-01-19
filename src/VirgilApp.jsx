@@ -1716,7 +1716,7 @@ export default function VirgilApp({ userId, userEmail }) {
                     <div className="relative">
                       <img 
                         src={uploadedPhoto} 
-                        alt="Uploaded session photo" 
+                        alt="Uploaded session content" 
                         className="w-full h-48 object-cover rounded-lg border-2 border-gray-300"
                       />
                       <button
