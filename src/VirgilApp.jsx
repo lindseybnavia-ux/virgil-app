@@ -1921,25 +1921,41 @@ export default function VirgilApp({ userId, userEmail }) {
         )}
 
         {/* Celebration Animation */}
-        {celebratingTodoId && (
-          <div className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center">
-            <div className="relative">
-              {/* Confetti particles */}
-              {[...Array(45)].map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute w-3 h-3 rounded-full animate-bounce"
-                  style={{
-                    background: ['#ea580c', '#eab308', '#15803d', '#1e3a8a', '#9333ea'][i % 5],
-                    left: `${Math.random() * 400 - 200}px`,
-                    top: `${Math.random() * 400 - 200}px`,
-                    animationDelay: `${Math.random() * 0.5}s`,
-                    animationDuration: `${0.8 + Math.random() * 0.4}s`,
-                    opacity: 0.8
-                  }}
-                />
-              ))}
-            </div>
+{celebratingTodoId && (
+  <div className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center">
+    <div className="relative">
+      {/* Confetti particles */}
+      {[...Array(45)].map((_, i) => {
+        const angle = (i / 45) * 360 * (Math.PI / 180);
+        const distance = 150 + Math.random() * 250;
+        const duration = 1.5 + Math.random() * 0.5;
+        const endX = Math.cos(angle) * distance;
+        const endY = Math.sin(angle) * distance;
+        
+        return (
+          <div
+            key={i}
+            className="absolute w-3 h-3 rounded-full"
+            style={{
+              background: ['#ea580c', '#eab308', '#22c55e', '#3b82f6', '#a855f7'][i % 5],
+              animation: `confetti-${i} ${duration}s ease-out forwards`,
+              animationDelay: `${Math.random() * 0.1}s`,
+            }}
+          >
+            <style>{`
+              @keyframes confetti-${i} {
+                0% {
+                  opacity: 1;
+                  transform: translate(0, 0) rotate(0deg) scale(1);
+                }
+                100% {
+                  opacity: 0;
+                  transform: translate(${endX}px, ${endY}px) rotate(720deg) scale(0.3);
+                }
+              }
+            `}</style>
+          </div>
+ 
             
             {/* Center celebration text */}
             <div className="absolute text-center">
