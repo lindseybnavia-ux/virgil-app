@@ -832,7 +832,7 @@ export default function VirgilApp({ userId, userEmail }) {
         <div className="bg-white rounded-xl shadow-lg p-2 mb-6 flex flex-wrap gap-2">
           <button
             onClick={() => setActiveView('dashboard')}
-            className={`flex-1 py-3 rounded-lg font-medium transition-colors ${
+            className={`w-[calc(50%-0.25rem)] md:flex-1 py-3 rounded-lg font-medium transition-colors ${
               activeView === 'dashboard'
                 ? 'bg-gradient-to-r from-blue-900 to-blue-800 text-white'
                 : 'text-gray-600 hover:bg-gray-100'
@@ -845,7 +845,7 @@ export default function VirgilApp({ userId, userEmail }) {
           </button>
           <button
             onClick={() => setActiveView('sessions')}
-            className={`flex-1 py-3 rounded-lg font-medium transition-colors ${
+            className={`w-[calc(50%-0.25rem)] md:flex-1 py-3 rounded-lg font-medium transition-colors ${
               activeView === 'sessions'
                 ? 'bg-gradient-to-r from-blue-900 to-blue-800 text-white'
                 : 'text-gray-600 hover:bg-gray-100'
@@ -859,7 +859,7 @@ export default function VirgilApp({ userId, userEmail }) {
           <button
             onClick={() => sessions.length >= 10 && setActiveView('insights')}
             disabled={sessions.length < 10}
-            className={`flex-1 py-3 rounded-lg font-medium transition-colors relative ${
+            className={`w-[calc(50%-0.25rem)] md:flex-1 py-3 rounded-lg font-medium transition-colors relative ${
               sessions.length < 10
                 ? 'text-gray-400 cursor-not-allowed opacity-60'
                 : activeView === 'insights'
@@ -878,7 +878,7 @@ export default function VirgilApp({ userId, userEmail }) {
           </button>
           <button
             onClick={() => setActiveView('calendar')}
-            className={`flex-1 py-3 rounded-lg font-medium transition-colors ${
+            className={`w-[calc(50%-0.25rem)] md:flex-1 py-3 rounded-lg font-medium transition-colors ${
               activeView === 'calendar'
                 ? 'bg-gradient-to-r from-blue-900 to-blue-800 text-white'
                 : 'text-gray-600 hover:bg-gray-100'
