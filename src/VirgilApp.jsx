@@ -829,7 +829,7 @@ export default function VirgilApp({ userId, userEmail }) {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-2 mb-6 flex gap-2">
+        <div className="bg-white rounded-xl shadow-lg p-2 mb-6 flex flex-wrap gap-2">
           <button
             onClick={() => setActiveView('dashboard')}
             className={`flex-1 py-3 rounded-lg font-medium transition-colors ${
