@@ -1955,6 +1955,9 @@ export default function VirgilApp({ userId, userEmail }) {
               }
             `}</style>
           </div>
+        );
+      })}
+    </div>
  
             
             {/* Center celebration text */}
