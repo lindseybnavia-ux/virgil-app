@@ -498,7 +498,7 @@ const [selectedCalendarDate, setSelectedCalendarDate] = useState(null);
     
     const upcomingTodos = todos.filter(todo => {
       if (todo.completed) return false;
-      const dueDate = new Date(todo.dueDate);
+      const dueDate = new Date(todo.dueDate + 'T00:00:00');
       return dueDate >= today;
     });
 
@@ -730,7 +730,7 @@ const getTodosForDate = (date) => {
             if (!nextTodo) return null;
 
             const sourceSession = sessions.find(s => s.id === nextTodo.sessionId);
-            const dueDate = new Date(nextTodo.dueDate);
+            const dueDate = new Date(nextTodo.dueDate + 'T00:00:00');
             const today = new Date();
             today.setHours(0, 0, 0, 0);
             const daysUntil = Math.ceil((dueDate - today) / (1000 * 60 * 60 * 24));
@@ -1021,7 +1021,7 @@ const getTodosForDate = (date) => {
                                           className="flex items-center gap-1 hover:text-blue-900 transition-colors"
                                         >
                                           <Calendar className="w-4 h-4" />
-                                          {new Date(todo.dueDate).toLocaleDateString()}
+                                     {new Date(todo.dueDate + 'T00:00:00').toLocaleDateString()}
                                         </button>
                                       )}
                                     </div>
@@ -1221,7 +1221,7 @@ const getTodosForDate = (date) => {
                                       <div className="flex items-center gap-2 text-xs">
                                         <span className="flex items-center gap-1 text-gray-500">
                                           <Calendar className="w-3 h-3" />
-                                          {new Date(todo.dueDate).toLocaleDateString()}
+                                          {new Date(todo.dueDate+ 'T00:00:00').toLocaleDateString()}
                                         </span>
                                         <span className={`px-2 py-0.5 rounded-full font-medium ${
                                           todo.priority === 'high' 
