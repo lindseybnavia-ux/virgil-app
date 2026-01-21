@@ -1498,116 +1498,177 @@ export default function VirgilApp({ userId, userEmail }) {
           </div>
         )}
 
-        {activeView === 'calendar' && (
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <div className="flex items-center justify-between mb-6">
-              <button
-                onClick={() => navigateCalendar(-1)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-              >
-                <ChevronLeft className="w-6 h-6 text-gray-600" />
-              </button>
-              <h2 className="text-2xl font-bold text-gray-800">
-                {currentCalendarDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
-              </h2>
-              <button
-                onClick={() => navigateCalendar(1)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-              >
-                <ChevronRight className="w-6 h-6 text-gray-600" />
-              </button>
-            </div>
+{activeView === 'calendar' && (
+  <div className="space-y-4">
+    {/* Month Navigation */}
+    <div className="bg-white rounded-xl shadow-lg p-4">
+      <div className="flex items-center justify-between mb-4">
+        <button
+          onClick={() => navigateCalendar(-1)}
+          className="p-2 hover:bg-gray-100 rounded-lg"
+        >
+          <ChevronLeft className="w-5 h-5 text-gray-600" />
+        </button>
+        <h3 className="text-xl font-semibold text-gray-800">
+          {currentCalendarDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+        </h3>
+        <button
+          onClick={() => navigateCalendar(1)}
+          className="p-2 hover:bg-gray-100 rounded-lg"
+        >
+          <ChevronRight className="w-5 h-5 text-gray-600" />
+        </button>
+      </div>
 
-            <div className="grid grid-cols-7 gap-2">
-              {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-                <div key={day} className="text-center font-semibold text-gray-600 py-2">
-                  {day}
+      {/* Calendar Grid */}
+      <div className="grid grid-cols-7 gap-1">
+        {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+          <div key={day} className="text-center text-xs font-medium text-gray-500 py-2">
+            {day}
+          </div>
+        ))}
+        
+        {(() => {
+          const { daysInMonth, startingDayOfWeek, year, month } = getDaysInMonth(currentCalendarDate);
+          const days = [];
+
+          for (let i = 0; i < startingDayOfWeek; i++) {
+            days.push(<div key={`empty-${i}`} className="aspect-square" />);
+          }
+
+          for (let day = 1; day <= daysInMonth; day++) {
+            const date = new Date(year, month, day);
+            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            const todosForDay = getTodosForDate(date);
+            const isSelected = selectedCalendarDate === dateStr;
+            const isCurrentDay = isToday(date);
+
+            days.push(
+              <button
+                key={day}
+                onClick={() => setSelectedCalendarDate(dateStr)}
+                className={`aspect-square p-1 rounded-lg text-sm relative transition-colors ${
+                  isSelected 
+                    ? 'bg-blue-900 text-white font-semibold' 
+                    : isCurrentDay
+                    ? 'bg-blue-100 text-blue-900 font-semibold'
+                    : 'hover:bg-gray-100'
+                }`}
+              >
+                <div className="flex flex-col items-center justify-center h-full">
+                  <span>{day}</span>
+                  {todosForDay.length > 0 && (
+                    <div className="flex gap-0.5 mt-0.5">
+                      {todosForDay.slice(0, 3).map((_, i) => (
+                        <div
+                          key={i}
+                          className={`w-1 h-1 rounded-full ${
+                            isSelected ? 'bg-white' : 'bg-blue-600'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
-              ))}
+              </button>
+            );
+          }
 
-              {(() => {
-                const { daysInMonth, startingDayOfWeek, year, month } = getDaysInMonth(currentCalendarDate);
-                const days = [];
+          return days;
+        })()}
+      </div>
+    </div>
 
-                for (let i = 0; i < startingDayOfWeek; i++) {
-                  days.push(
-                    <div key={`empty-${i}`} className="aspect-square p-2 bg-gray-50 rounded-lg" />
-                  );
-                }
+    {/* Selected Date Items */}
+    {selectedCalendarDate && (
+      <div className="bg-white rounded-xl shadow-lg p-6">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-semibold text-gray-800">
+            {new Date(selectedCalendarDate + 'T00:00:00').toLocaleDateString('en-US', { 
+              weekday: 'long',
+              month: 'long', 
+              day: 'numeric',
+              year: 'numeric'
+            })}
+          </h3>
+          <button
+            onClick={() => setSelectedCalendarDate(null)}
+            className="text-gray-500 hover:text-gray-700"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
 
-                for (let day = 1; day <= daysInMonth; day++) {
-                  const date = new Date(year, month, day);
-                  const todosForDay = getTodosForDate(date);
-                  const isCurrentDay = isToday(date);
+        {(() => {
+          const [year, month, day] = selectedCalendarDate.split('-').map(Number);
+          const date = new Date(year, month - 1, day);
+          const itemsOnDate = getTodosForDate(date);
+          
+          if (itemsOnDate.length === 0) {
+            return (
+              <p className="text-gray-500 text-center py-8">No action items on this date</p>
+            );
+          }
 
-                  days.push(
-                    <div
-                      key={day}
-                      className={`aspect-square p-2 rounded-lg border-2 transition-all ${
-                        isCurrentDay
-                          ? 'border-blue-900 bg-blue-50'
-                          : 'border-gray-200 hover:border-blue-300'
-                      }`}
-                    >
-                      <div className={`text-sm font-semibold mb-1 ${
-                        isCurrentDay ? 'text-blue-900' : 'text-gray-700'
-                      }`}>
-                        {day}
-                      </div>
-                      <div className="space-y-1">
-                        {todosForDay.slice(0, 3).map(todo => (
-                          <div
-                            key={todo.id}
-                            className={`text-xs px-1 py-0.5 rounded truncate ${
-                              todo.completed
-                                ? 'bg-green-100 text-green-800 line-through'
-                                : todo.priority === 'high'
-                                ? 'bg-orange-100 text-orange-800'
-                                : todo.priority === 'medium'
-                                ? 'bg-yellow-100 text-yellow-800'
-                                : 'bg-green-100 text-green-800'
-                            }`}
-                            title={todo.title}
-                          >
-                            {todo.title}
-                          </div>
-                        ))}
-                        {todosForDay.length > 3 && (
-                          <div className="text-xs text-gray-500 px-1">
-                            +{todosForDay.length - 3} more
-                          </div>
+          return (
+            <div className="space-y-3">
+              {itemsOnDate.map(todo => {
+                const session = sessions.find(s => s.id === todo.sessionId);
+                return (
+                  <div
+                    key={todo.id}
+                    className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors"
+                  >
+                    <div className="flex items-start gap-3">
+                      <button
+                        onClick={() => toggleTodo(todo.id)}
+                        className="mt-1 flex-shrink-0"
+                      >
+                        {todo.completed ? (
+                          <CheckCircle2 className="w-5 h-5 text-green-600" />
+                        ) : (
+                          <Circle className="w-5 h-5 text-gray-400 hover:text-blue-600" />
                         )}
+                      </button>
+                      
+                      <div className="flex-1 min-w-0">
+                        <h4 className={`font-medium ${todo.completed ? 'line-through text-gray-500' : 'text-gray-800'}`}>
+                          {todo.title}
+                        </h4>
+                        {todo.description && (
+                          <p className="text-sm text-gray-600 mt-1">{todo.description}</p>
+                        )}
+                        <div className="flex flex-wrap items-center gap-2 mt-2">
+                          <span className={`text-xs px-2 py-1 rounded-full font-medium ${
+                            todo.priority === 'high' 
+                              ? 'bg-orange-100 text-orange-700'
+                              : todo.priority === 'medium'
+                              ? 'bg-yellow-100 text-yellow-700'
+                              : 'bg-green-100 text-green-700'
+                          }`}>
+                            {todo.priority === 'high' ? 'High Priority' : todo.priority === 'medium' ? 'Medium Priority' : 'Low Priority'}
+                          </span>
+                          {session && (
+                            <button
+                              onClick={() => navigateToSession(session.id)}
+                              className="text-xs px-2 py-1 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 font-medium"
+                            >
+                              {session.type}
+                            </button>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  );
-                }
-
-                return days;
-              })()}
+                  </div>
+                );
+              })}
             </div>
-
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <div className="flex flex-wrap gap-4 text-sm">
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded bg-orange-100" />
-                  <span className="text-gray-600">High Priority</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded bg-yellow-100" />
-                  <span className="text-gray-600">Medium Priority</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded bg-green-100" />
-                  <span className="text-gray-600">Low Priority</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded bg-green-100 border border-green-300" />
-                  <span className="text-gray-600">Completed</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+          );
+        })()}
+      </div>
+    )}
+  </div>
+)}
 
         {showNewSessionModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto">
