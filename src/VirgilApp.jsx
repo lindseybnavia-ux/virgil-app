@@ -659,10 +659,13 @@ const [selectedCalendarDate, setSelectedCalendarDate] = useState(null);
     return { daysInMonth, startingDayOfWeek, year, month };
   };
 
-  const getTodosForDate = (date) => {
-    const dateStr = date.toISOString().split('T')[0];
-    return todos.filter(todo => todo.dueDate === dateStr);
-  };
+const getTodosForDate = (date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const dateStr = `${year}-${month}-${day}`;
+  return todos.filter(todo => todo.dueDate === dateStr);
+};
 
   const navigateCalendar = (direction) => {
     const newDate = new Date(currentCalendarDate);
