@@ -23,6 +23,7 @@ export default function VirgilApp({ userId, userEmail }) {
   const [editingDate, setEditingDate] = useState('');
   const [editingTodoDetails, setEditingTodoDetails] = useState(null);
   const [currentCalendarDate, setCurrentCalendarDate] = useState(new Date());
+const [selectedCalendarDate, setSelectedCalendarDate] = useState(null); 
   const [userProfile, setUserProfile] = useState(null);
   const [showProfileSetup, setShowProfileSetup] = useState(false);
   const [profileForm, setProfileForm] = useState({ name: '', email: '' });
