@@ -1101,11 +1101,18 @@ const getTodosForDate = (date) => {
         {activeView === 'sessions' && (
           <div className="space-y-4">
             {sessions.length === 0 ? (
-              <div className="bg-white rounded-xl shadow-lg p-12 text-center">
-                <MessageSquare className="w-16 h-16 text-blue-300 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-700 mb-2">No sessions recorded</h3>
-                <p className="text-gray-500 mb-6">Start by adding your first therapy or breathwork session!</p>
-              </div>
+       <div className="bg-white rounded-xl shadow-lg p-12 text-center">
+  <MessageSquare className="w-16 h-16 text-blue-300 mx-auto mb-4" />
+  <h3 className="text-xl font-semibold text-gray-700 mb-2">No sessions recorded</h3>
+  <p className="text-gray-500 mb-6">Start by adding your first session!</p>
+  <button
+    onClick={() => setShowNewSessionModal(true)}
+    className="bg-gradient-to-r from-blue-900 to-blue-800 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-shadow inline-flex items-center gap-2"
+  >
+    <Plus className="w-5 h-5" />
+    Add New Session
+  </button>
+</div>
             ) : (
               <>
                 <div className="bg-white rounded-xl shadow-lg p-4">
