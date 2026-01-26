@@ -701,7 +701,7 @@ const getTodosForDate = (date) => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-gray-800">Virgil</h1>
-                <p className="text-gray-600 text-sm">Turn insight into action</p>
+                <p className="text-gray-600 text-sm">Turn your insights into action</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
