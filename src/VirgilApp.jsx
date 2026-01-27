@@ -1845,7 +1845,8 @@ const getTodosForDate = (date) => {
                     type="date"
                     value={newSession.date}
                     onChange={(e) => setNewSession({ ...newSession, date: e.target.value })}
-                    className="w-full max-w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent"
+                    style={{ width: '100%', boxSizing: 'border-box' }}
                   />
                 </div>
 
