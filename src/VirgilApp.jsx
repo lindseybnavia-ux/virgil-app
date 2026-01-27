@@ -880,15 +880,15 @@ const getTodosForDate = (date) => {
     </div>
   </div>
 ) : todos.length > 0 && showOnboardingTip ? (
-  <div className="bg-gradient-to-r from-gray-100 to-gray-50 rounded-xl shadow-lg p-6 mb-6 border border-gray-200">
+  <div className="bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl shadow-lg p-6 mb-6">
     <div className="flex items-start gap-4">
       <div className="flex-1">
-        <h3 className="text-gray-800 font-semibold text-lg mb-1">You did it! Keep going! </h3>
-        <p className="text-gray-600 text-sm">You can edit your generated action items and track them in the calendar. Add more sessions to unlock insights over time.</p>
+        <h3 className="text-blue-900 font-semibold text-lg mb-1">You did it! Keep going! </h3>
+        <p className="text-blue-700 text-sm">You can edit your generated action items and track them in the calendar. Add more sessions to unlock insights over time.</p>
       </div>
       <button
         onClick={() => setShowOnboardingTip(false)}
-        className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+        className="text-blue-400 hover:text-blue-600 transition-colors flex-shrink-0"
         title="Dismiss"
       >
         <X className="w-5 h-5" />
