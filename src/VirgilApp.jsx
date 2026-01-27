@@ -841,7 +841,7 @@ const getTodosForDate = (date) => {
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div>
         <h3 className="text-white font-semibold text-lg mb-1">Welcome to Virgil!</h3>
-        <p className="text-blue-100 text-sm">Get started by adding your first session. You can type notes, create a voice recording or a upload a photo from your journal.</p>
+        <p className="text-blue-100 text-sm">Get started by adding your first session. You can type notes, create a voice recording or upload a photo from your journal.</p>
       </div>
       <button
         onClick={() => setShowNewSessionModal(true)}
