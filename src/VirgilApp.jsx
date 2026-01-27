@@ -857,7 +857,7 @@ const getTodosForDate = (date) => {
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div>
         <h3 className="text-white font-semibold text-lg mb-1">You added your first session! </h3>
-        <p className="text-green-100 text-sm">Next, turn your insights into actiona and generate action items from each session.</p>
+        <p className="text-green-100 text-sm">Next, turn your insights into actions and generate action items from each session.</p>
       </div>
       <button
   onClick={() => {
@@ -895,7 +895,7 @@ const getTodosForDate = (date) => {
       </button>
     </div>
   </div>
-: null}
+) : null}
         
         <div className="bg-white rounded-xl shadow-lg p-2 mb-6 flex flex-wrap gap-2">
           <button
