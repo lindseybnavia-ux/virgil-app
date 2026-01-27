@@ -833,7 +833,8 @@ const getTodosForDate = (date) => {
           </div>
         </div>
 
-      {sessions.length === 0 && (
+{/* Progressive Onboarding Banner */}
+{sessions.length === 0 ? (
   <div className="bg-gradient-to-r from-blue-900 to-blue-800 rounded-xl shadow-lg p-6 mb-6">
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div>
@@ -849,7 +850,24 @@ const getTodosForDate = (date) => {
       </button>
     </div>
   </div>
-)}
+) : sessions.length > 0 && todos.length === 0 ? (
+  <div className="bg-gradient-to-r from-green-700 to-green-600 rounded-xl shadow-lg p-6 mb-6">
+    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <h3 className="text-white font-semibold text-lg mb-1">Great! Session added 🎉</h3>
+        <p className="text-green-100 text-sm">Now generate action items from your session</p>
+      </div>
+      <button
+        onClick={() => setActiveView('sessions')}
+        className="bg-white text-green-700 px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow flex items-center justify-center gap-2 w-full md:w-auto"
+      >
+        <Sparkles className="w-5 h-5" />
+        Generate Action Items
+      </button>
+    </div>
+  </div>
+) : null}
+        
         <div className="bg-white rounded-xl shadow-lg p-2 mb-6 flex flex-wrap gap-2">
           <button
             onClick={() => setActiveView('dashboard')}
