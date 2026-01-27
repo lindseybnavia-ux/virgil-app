@@ -854,8 +854,8 @@ const getTodosForDate = (date) => {
   <div className="bg-gradient-to-r from-green-700 to-green-600 rounded-xl shadow-lg p-6 mb-6">
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div>
-        <h3 className="text-white font-semibold text-lg mb-1">Great! Session added 🎉</h3>
-        <p className="text-green-100 text-sm">Now generate action items from your session</p>
+        <h3 className="text-white font-semibold text-lg mb-1">You added your first session! 🎉</h3>
+        <p className="text-green-100 text-sm">Next, generate action items from each session</p>
       </div>
       <button
         onClick={() => setActiveView('sessions')}
