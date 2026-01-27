@@ -833,6 +833,23 @@ const getTodosForDate = (date) => {
           </div>
         </div>
 
+      {sessions.length === 0 && (
+  <div className="bg-gradient-to-r from-blue-900 to-blue-800 rounded-xl shadow-lg p-6 mb-6">
+    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <h3 className="text-white font-semibold text-lg mb-1">Welcome to Virgil!</h3>
+        <p className="text-blue-100 text-sm">Get started by adding your first session</p>
+      </div>
+      <button
+        onClick={() => setShowNewSessionModal(true)}
+        className="bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow flex items-center justify-center gap-2 w-full md:w-auto"
+      >
+        <Plus className="w-5 h-5" />
+        Add New Session
+      </button>
+    </div>
+  </div>
+)}
         <div className="bg-white rounded-xl shadow-lg p-2 mb-6 flex flex-wrap gap-2">
           <button
             onClick={() => setActiveView('dashboard')}
