@@ -1838,22 +1838,19 @@ const getTodosForDate = (date) => {
                 </div>
 
                <div>
-  <label className="block text-sm font-medium text-gray-700 mb-2">
-    Date
-  </label>
-  <div className="w-full">
-    <input
-      type="date"
-      value={newSession.date}
-      onChange={(e) => setNewSession({ ...newSession, date: e.target.value })}
-      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent"
-      style={{ 
-        width: '100%',
-        maxWidth: '100%',
-        boxSizing: 'border-box'
-      }}
-    />
-  </div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Date
+              </label>
+              <input
+                type="date"
+                value={newSession.date}
+                onChange={(e) => setNewSession({ ...newSession, date: e.target.value })}
+                className="w-full px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent"
+                style={{ 
+                height: '48px',
+                lineHeight: 'normal'
+    }}
+  />
 </div>
 
                 <div>
