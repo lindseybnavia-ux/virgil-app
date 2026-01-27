@@ -1751,10 +1751,10 @@ const getTodosForDate = (date) => {
 )}
 
         {showNewSessionModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto">
-            <div className="min-h-full flex items-start justify-center p-4 py-8">
-              <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl p-6">
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">Record New Session</h2>
+  <div className="fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto">
+    <div className="min-h-full flex items-start justify-center p-4 py-8 overflow-x-hidden">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl p-6 overflow-x-hidden">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Record New Session</h2>
               
               {sessionError && (
                 <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
