@@ -858,7 +858,10 @@ const getTodosForDate = (date) => {
         <p className="text-green-100 text-sm">Next, generate action items from each session</p>
       </div>
       <button
-        onClick={() => setActiveView('sessions')}
+        onClick={() => {
+  setActiveView('sessions');
+  setExpandedSessionId(sessions[0].id);
+}}
         className="bg-white text-green-700 px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow flex items-center justify-center gap-2 w-full md:w-auto"
       >
         <Sparkles className="w-5 h-5" />
