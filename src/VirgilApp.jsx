@@ -23,7 +23,7 @@ export default function VirgilApp({ userId, userEmail }) {
   const [editingDate, setEditingDate] = useState('');
   const [editingTodoDetails, setEditingTodoDetails] = useState(null);
   const [currentCalendarDate, setCurrentCalendarDate] = useState(new Date());
-const [selectedCalendarDate, setSelectedCalendarDate] = useState(null); 
+  const [selectedCalendarDate, setSelectedCalendarDate] = useState(null); 
   const [userProfile, setUserProfile] = useState(null);
   const [showProfileSetup, setShowProfileSetup] = useState(false);
   const [profileForm, setProfileForm] = useState({ name: '', email: '' });
@@ -35,6 +35,7 @@ const [selectedCalendarDate, setSelectedCalendarDate] = useState(null);
   const [insights, setInsights] = useState([]);
   const [generatingInsights, setGeneratingInsights] = useState(false);
   const [selectedInsightIndex, setSelectedInsightIndex] = useState(0);
+  const [showOnboardingTip, setShowOnboardingTip] = useState(true);
 
   useEffect(() => {
     loadData();
@@ -840,7 +841,7 @@ const getTodosForDate = (date) => {
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div>
         <h3 className="text-white font-semibold text-lg mb-1">Welcome to Virgil!</h3>
-        <p className="text-blue-100 text-sm">Get started by adding your first session</p>
+        <p className="text-blue-100 text-sm">Get started by adding your first session. You can add notes, a voice recording or a photo of your notes.</p>
       </div>
       <button
         onClick={() => setShowNewSessionModal(true)}
@@ -855,8 +856,8 @@ const getTodosForDate = (date) => {
   <div className="bg-gradient-to-r from-green-700 to-green-600 rounded-xl shadow-lg p-6 mb-6">
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div>
-        <h3 className="text-white font-semibold text-lg mb-1">You added your first session! 🎉</h3>
-        <p className="text-green-100 text-sm">Next, generate action items from each session</p>
+        <h3 className="text-white font-semibold text-lg mb-1">You added your first session! </h3>
+        <p className="text-green-100 text-sm">Next, turn your insights into actiona and generate action items from each session.</p>
       </div>
       <button
   onClick={() => {
@@ -878,7 +879,23 @@ const getTodosForDate = (date) => {
       </button>
     </div>
   </div>
-) : null}
+) : todos.length > 0 && showOnboardingTip ? (
+  <div className="bg-gradient-to-r from-gray-100 to-gray-50 rounded-xl shadow-lg p-6 mb-6 border border-gray-200">
+    <div className="flex items-start gap-4">
+      <div className="flex-1">
+        <h3 className="text-gray-800 font-semibold text-lg mb-1">You did it! Keep going! </h3>
+        <p className="text-gray-600 text-sm">You can edit your generated action items and track them in the calendar. Add more sessions to unlock insights over time.</p>
+      </div>
+      <button
+        onClick={() => setShowOnboardingTip(false)}
+        className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+        title="Dismiss"
+      >
+        <X className="w-5 h-5" />
+      </button>
+    </div>
+  </div>
+: null}
         
         <div className="bg-white rounded-xl shadow-lg p-2 mb-6 flex flex-wrap gap-2">
           <button
