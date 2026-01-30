@@ -91,29 +91,30 @@ export default function LandingPage({ onGetStarted }) {
           </div>
         </div>
 
-     {/* Social Proof / CTA */}
-<div className="text-center mt-16 max-w-2xl mx-auto">
-  <p className="text-gray-500 text-sm mb-6">Trusted by people committed to personal growth</p>
-  <div className="flex justify-center items-center gap-4 mb-8">
-    <div className="flex -space-x-2">
-      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 border-2 border-white"></div>
-      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 border-2 border-white"></div>
-      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 border-2 border-white"></div>
-      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 border-2 border-white"></div>
-    </div>
-  </div>
-  <button
-    onClick={onGetStarted}
-    className="bg-gradient-to-r from-blue-900 to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl transition-all inline-flex items-center gap-3 group"
-  >
-    Join the Beta
-    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-  </button>
-</div>
+ {/* Social Proof / CTA */}
+        <div className="text-center mt-16 max-w-2xl mx-auto">
+          <p className="text-gray-500 text-sm mb-6">Trusted by people committed to personal growth</p>
+          <div className="flex justify-center items-center gap-4 mb-8">
+            <div className="flex -space-x-2">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 border-2 border-white"></div>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 border-2 border-white"></div>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 border-2 border-white"></div>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 border-2 border-white"></div>
+            </div>
+          </div>
+          <button
+            onClick={onGetStarted}
+            className="bg-gradient-to-r from-blue-900 to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl transition-all inline-flex items-center gap-3 group"
+          >
+            Join the Beta
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
 
-      {/* Footer */}
-      <div className="text-center py-8 border-t border-gray-200 mt-16">
-        <p className="text-gray-500 text-sm">© 2026 Virgil. Turn your insights into action.</p>
+        {/* Footer */}
+        <div className="text-center py-8 border-t border-gray-200 mt-16">
+          <p className="text-gray-500 text-sm">© 2026 Virgil. Turn your insights into action.</p>
+        </div>
       </div>
     </div>
   );
