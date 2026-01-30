@@ -718,9 +718,13 @@ const getTodosForDate = (date) => {
                 </button>
               )}
               <button
-                onClick={() => setShowNewSessionModal(true)}
-                className="bg-gradient-to-r from-blue-900 to-blue-800 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:shadow-lg transition-shadow"
-              >
+  onClick={() => {
+    const today = new Date().toISOString().split('T')[0];
+    setNewSession({ type: '', date: today, notes: '' });
+    setShowNewSessionModal(true);
+  }}
+  className="bg-gradient-to-r from-blue-900 to-blue-800 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:shadow-lg transition-shadow"
+>
                 <Plus className="w-5 h-5" />
                 <span className="hidden sm:inline">New Session</span>
               </button>
