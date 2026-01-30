@@ -64,7 +64,7 @@ export default function LandingPage({ onGetStarted }) {
             <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
               <Sparkles className="w-6 h-6 text-blue-900" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Generate Custom Action Items</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">Custom Action Items</h3>
             <p className="text-gray-600">
               Automatically generate personalized action items from your session notes.
             </p>
@@ -76,7 +76,7 @@ export default function LandingPage({ onGetStarted }) {
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Track Your Progress</h3>
             <p className="text-gray-600">
-              Hold yourself accountable. Visualize your action items in a calendar and celebrate as you complete them.
+              Hold yourself accountable. Visualize your action items in the calendar and celebrate as you complete them.
             </p>
           </div>
 
