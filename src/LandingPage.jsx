@@ -25,8 +25,6 @@ export default function LandingPage({ onGetStarted }) {
           </button>
         </div>
 
-        </div>
-
       {/* How It Works */}
         <div className="max-w-4xl mx-auto mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How It Works</h2>
