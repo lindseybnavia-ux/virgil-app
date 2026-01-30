@@ -25,13 +25,46 @@ export default function LandingPage({ onGetStarted }) {
           </button>
         </div>
 
+        </div>
+
+        {/* How It Works */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How It Works</h2>
+          <div className="bg-white rounded-3xl shadow-xl p-10">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 bg-blue-900 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                  <h3 className="text-xl font-semibold text-gray-900">Capture Your Session</h3>
+                </div>
+                <p className="text-gray-600 ml-11">
+                  Type your notes, create a voice recording, or upload a photo right from your journal to Virgil. Whatever method feels best for you.
+                </p>
+              </div>
+              <div className="hidden md:block text-gray-300 text-3xl">→</div>
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 bg-blue-900 text-white rounded-full flex items-center justify-center font-bold">2</div>
+                  <h3 className="text-xl font-semibold text-gray-900">Generate Action Items</h3>
+                </div>
+                <p className="text-gray-600 ml-11">
+                  Instantly transform your insights into personalized, actionable next steps.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+
         {/* Features Grid */}
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
             <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
               <Sparkles className="w-6 h-6 text-blue-900" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">AI-Powered Action Items</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">Generate Custom Action Items</h3>
             <p className="text-gray-600">
               Automatically generate personalized action items from your session notes.
             </p>
@@ -53,7 +86,7 @@ export default function LandingPage({ onGetStarted }) {
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Growth Insights</h3>
             <p className="text-gray-600">
-              Unlock detailed insights about your patterns and progress over time.
+              Unlock detailed insight reports about your patterns and personal development progress over time.
             </p>
           </div>
         </div>
