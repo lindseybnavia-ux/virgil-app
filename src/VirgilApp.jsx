@@ -37,10 +37,17 @@ export default function VirgilApp({ userId, userEmail }) {
   const [selectedInsightIndex, setSelectedInsightIndex] = useState(0);
   const [showOnboardingTip, setShowOnboardingTip] = useState(true);
 
-  useEffect(() => {
-    loadData();
-    loadUserProfile();
-  }, []);
+useEffect(() => {
+  loadData();
+  loadUserProfile();
+}, []);
+
+useEffect(() => {
+  if (showNewSessionModal && !newSession.date) {
+    const today = new Date().toISOString().split('T')[0];
+    setNewSession(prev => ({ ...prev, date: today }));
+  }
+}, [showNewSessionModal]);
 
   const loadUserProfile = async () => {
     try {
