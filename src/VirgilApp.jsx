@@ -1185,12 +1185,16 @@ const getTodosForDate = (date) => {
   <h3 className="text-xl font-semibold text-gray-700 mb-2">No sessions recorded</h3>
   <p className="text-gray-500 mb-6">Start by adding your first session!</p>
   <button
-    onClick={() => setShowNewSessionModal(true)}
-    className="bg-gradient-to-r from-blue-900 to-blue-800 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-shadow inline-flex items-center gap-2"
-  >
-    <Plus className="w-5 h-5" />
-    Add New Session
-  </button>
+  onClick={() => {
+    const today = new Date().toISOString().split('T')[0];
+    setNewSession({ type: '', date: today, notes: '' });
+    setShowNewSessionModal(true);
+  }}
+  className="bg-gradient-to-r from-blue-900 to-blue-800 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-shadow inline-flex items-center gap-2"
+>
+  <Plus className="w-5 h-5" />
+  Add New Session
+</button>
 </div>
             ) : (
               <>
