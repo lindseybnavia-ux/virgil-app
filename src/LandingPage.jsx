@@ -54,7 +54,23 @@ export default function LandingPage({ onGetStarted }) {
             </div>
           </div>
         </div>
+</div>
 
+        {/* Testimonial */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <div className="bg-gradient-to-br from-blue-50 to-white rounded-3xl p-10 md:p-12 shadow-lg border border-blue-100">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 mb-6"></div>
+              <blockquote className="text-lg md:text-xl text-gray-700 italic mb-6 max-w-3xl">
+                "I do a lot of breath work and meditation and my notes were in different journals or on my phone. Virgil helped me create a command center of all my insights, and generate doable action items so I don't miss important progress I wanted to make."
+              </blockquote>
+              <cite className="text-gray-900 font-semibold not-italic">— Sarah G.</cite>
+            </div>
+          </div>
+        </div>
+
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
         {/* Features Grid */}
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
 
