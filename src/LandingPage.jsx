@@ -14,7 +14,7 @@ export default function LandingPage({ onGetStarted }) {
             Turn Your Insights Into Action
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Virgil helps you capture insights from therapy, coaching, and other personal growth sessions then turns them into actionable next steps you'll actually complete.
+            Virgil captures your insights from therapy, coaching, and other personal development sessions then turns them into actionable next steps you'll actually complete.
           </p>
           <button
             onClick={onGetStarted}
