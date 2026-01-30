@@ -27,7 +27,7 @@ export default function LandingPage({ onGetStarted }) {
 
         </div>
 
-        {/* How It Works */}
+      {/* How It Works */}
         <div className="max-w-4xl mx-auto mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How It Works</h2>
           <div className="bg-white rounded-3xl shadow-xl p-10">
@@ -54,7 +54,6 @@ export default function LandingPage({ onGetStarted }) {
             </div>
           </div>
         </div>
-</div>
 
         {/* Testimonial */}
         <div className="max-w-4xl mx-auto mb-16">
@@ -68,11 +67,6 @@ export default function LandingPage({ onGetStarted }) {
             </div>
           </div>
         </div>
-
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
 
         {/* Features Grid */}
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -107,7 +101,7 @@ export default function LandingPage({ onGetStarted }) {
           </div>
         </div>
 
- {/* Social Proof / CTA */}
+        {/* Social Proof / CTA */}
         <div className="text-center mt-16 max-w-2xl mx-auto">
           <p className="text-gray-500 text-sm mb-6">Trusted by people committed to personal growth</p>
           <div className="flex justify-center items-center gap-4 mb-8">
