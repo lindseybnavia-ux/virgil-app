@@ -47,7 +47,7 @@ useEffect(() => {
     const today = new Date().toISOString().split('T')[0];
     setNewSession(prev => ({ ...prev, date: today }));
   }
-}, [showNewSessionModal]);
+}, [showNewSessionModal, newSession.date]);
 
   const loadUserProfile = async () => {
     try {
