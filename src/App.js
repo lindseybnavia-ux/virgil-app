@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './firebase-config';
+import LandingPage from './LandingPage';
 import AuthScreen from './AuthScreen';
 import VirgilApp from './VirgilApp';
 import { LogOut } from 'lucide-react';
@@ -8,11 +9,15 @@ import { LogOut } from 'lucide-react';
 export default function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showAuth, setShowAuth] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
+      if (currentUser) {
+        setShowAuth(true); // Auto-show app if logged in
+      }
     });
     return () => unsubscribe();
   }, []);
@@ -20,6 +25,7 @@ export default function App() {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
+      setShowAuth(false); // Go back to landing page
     } catch (error) {
       console.error('Error signing out:', error);
     }
@@ -36,10 +42,17 @@ export default function App() {
     );
   }
 
+  // Show landing page if not logged in and haven't clicked "Get Started"
+  if (!user && !showAuth) {
+    return <LandingPage onGetStarted={() => setShowAuth(true)} />;
+  }
+
+  // Show auth screen if clicked "Get Started" but not logged in
   if (!user) {
     return <AuthScreen onAuthSuccess={() => setUser(auth.currentUser)} />;
   }
 
+  // Show app if logged in
   return (
     <div className="relative">
       <button
