@@ -53,6 +53,43 @@ export default function LandingPage({ onGetStarted }) {
           </div>
         </div>
 
+                {/* Problem Statement */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <div className="bg-gradient-to-br from-slate-900 to-blue-900 rounded-3xl p-12 md:p-16 text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
+              Insight isn't the problem. Follow-through is.
+            </h2>
+            
+            <div className="space-y-6 text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
+              <p>
+                You think deeply, you do the work. You notice patterns. You have moments of real clarity.
+              </p>
+              <p>
+                And then life happens.
+              </p>
+              <p>
+                The insight fades. The note gets buried. And the same promises quietly expire.
+              </p>
+              <p className="text-white font-semibold pt-4">
+                Virgil exists for the moment after the realization — when most tools disappear.
+              </p>
+            </div>
+
+            <div className="mt-12 pt-12 border-t border-blue-700 space-y-4 text-lg text-blue-100 max-w-3xl mx-auto">
+              <p className="font-semibold text-white">Virgil is not a journal.</p>
+              <p>
+                Journals capture thoughts. Task managers track tasks. Habit apps gamify behavior.
+              </p>
+              <p className="text-white font-semibold">
+                Virgil does something different.
+              </p>
+              <p>
+                It records how you want to grow — and whether you acted on it.
+              </p>
+            </div>
+          </div>
+        </div>
+        
         {/* Testimonial */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="bg-gradient-to-br from-blue-50 to-white rounded-3xl p-10 md:p-12 shadow-lg border border-blue-100">
