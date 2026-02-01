@@ -81,7 +81,7 @@ export default function LandingPage({ onGetStarted }) {
                 Virgil does something different.
               </p>
               <p>
-                It records how you want to grow and whether you acted on it.
+                It helps you generate real, doable next steps from your sessions so you can be accountable to yourself.
               </p>
             </div>
           </div>
