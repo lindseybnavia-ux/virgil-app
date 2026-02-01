@@ -2,6 +2,22 @@ import React from 'react';
 import { Brain, Sparkles, Calendar, TrendingUp, ArrowRight } from 'lucide-react';
 
 export default function LandingPage({ onGetStarted }) {
+   const [activeTestimonial, setActiveTestimonial] = React.useState(0);
+  
+  const testimonials = [
+    {
+      quote: "I do a lot of breath work and meditation and my notes were in different journals or on my phone. Virgil helped me create a command center of all my insights, and generate doable action items so I don't miss important progress I wanted to make.",
+      author: "Sarah G."
+    },
+    {
+      quote: "As someone in therapy, I used to leave sessions with great insights but no clear next steps. I drop quick summary into Virgil and I instantly have doable items to focus on.",
+      author: "Michael T."
+    },
+    {
+      quote: "I'm not a big note taker so I love Virgil's voice note feature. I talk about what came up after a journey and it helps generate a clear path forward so I don't lose the magic from those sessions.",
+      author: "Priya K."
+    }
+  ];
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-50">
       {/* Hero Section */}
@@ -68,7 +84,7 @@ export default function LandingPage({ onGetStarted }) {
                 The insight fades. The note gets buried. And the same promises quietly expire.
               </p>
               <p className="text-white font-semibold pt-4">
-                Virgil exists for the moment after the realization, when most tools disappear.
+                Virgil exists for the moments in between sessions, when most tools disappear.
               </p>
             </div>
 
@@ -87,15 +103,60 @@ export default function LandingPage({ onGetStarted }) {
           </div>
         </div>
         
-        {/* Testimonial */}
+  {/* Testimonial Carousel */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="bg-gradient-to-br from-blue-50 to-white rounded-3xl p-10 md:p-12 shadow-lg border border-blue-100">
             <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 mb-6"></div>
-              <blockquote className="text-lg md:text-xl text-gray-700 italic mb-6 max-w-3xl">
-                "I do a lot of breath work and meditation and my notes were in different journals or on my phone. Virgil helped me create a command center of all my insights, and generate doable action items so I don't miss important progress I wanted to make."
+              
+              {/* Quote */}
+              <blockquote className="text-lg md:text-xl text-gray-700 italic mb-6 max-w-3xl min-h-[120px] flex items-center">
+                "{testimonials[activeTestimonial].quote}"
               </blockquote>
-              <cite className="text-gray-900 font-semibold not-italic">— Sarah G.</cite>
+              
+              {/* Author */}
+              <cite className="text-gray-900 font-semibold not-italic mb-8">
+                — {testimonials[activeTestimonial].author}
+              </cite>
+
+              {/* Carousel Controls */}
+              <div className="flex items-center gap-6">
+                <button
+                  onClick={() => setActiveTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
+                  className="p-2 rounded-full hover:bg-blue-100 transition-colors"
+                  aria-label="Previous testimonial"
+                >
+                  <svg className="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                {/* Dots */}
+                <div className="flex gap-2">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveTestimonial(index)}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        index === activeTestimonial 
+                          ? 'w-8 bg-blue-900' 
+                          : 'bg-blue-300 hover:bg-blue-400'
+                      }`}
+                      aria-label={`Go to testimonial ${index + 1}`}
+                    />
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => setActiveTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
+                  className="p-2 rounded-full hover:bg-blue-100 transition-colors"
+                  aria-label="Next testimonial"
+                >
+                  <svg className="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
