@@ -10,11 +10,11 @@ export default function LandingPage({ onGetStarted }) {
       author: "Sarah G."
     },
     {
-      quote: "As someone in therapy, I used to leave sessions with great insights but no clear next steps. I drop quick summary into Virgil and I instantly have doable items to focus on.",
+      quote: "As someone in therapy, I used to leave sessions with great insights but no clear next steps. I drop a quick summary into Virgil and I instantly have items to focus on.",
       author: "Michael T."
     },
     {
-      quote: "I'm not a big note taker so I love Virgil's voice note feature. I talk about what came up after a journey and it helps generate a clear path forward so I don't lose the magic from those sessions.",
+      quote: "I'm not a big note taker so I love Virgil's voice note feature. I talk about what came up for me after a journey and it helps generate a clear path forward so I don't lose the magic from those sessions.",
       author: "Priya K."
     }
   ];
