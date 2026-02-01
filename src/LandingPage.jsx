@@ -27,7 +27,7 @@ export default function LandingPage({ onGetStarted }) {
             <Brain className="w-10 h-10 text-white" />
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Insight isn't the breakthrough, action is. 
+            Insight isn't the breakthrough. Action is. 
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Virgil turns your insights from personal development sessions like therapy or meditation into follow through, so your growth shows up in real life. 
@@ -43,7 +43,7 @@ export default function LandingPage({ onGetStarted }) {
 
       {/* How It Works */}
         <div className="max-w-4xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Notice. Commit. Act. Repeat. </h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Capture. Commit. Act. Repeat. </h2>
           <div className="bg-white rounded-3xl shadow-xl p-10">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="flex-1">
