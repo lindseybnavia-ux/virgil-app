@@ -11,10 +11,10 @@ export default function LandingPage({ onGetStarted }) {
             <Brain className="w-10 h-10 text-white" />
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Turn Your Insights Into Action
+            Insight isn't the breakthrough, action is. 
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Virgil captures your insights from therapy, coaching, and other personal development sessions then turns them into actionable next steps you'll actually complete.
+            Virgil turns your insights from personal development sessions like therapy or meditation into follow through, so your growth shows up in real life. 
           </p>
           <button
             onClick={onGetStarted}
@@ -27,7 +27,7 @@ export default function LandingPage({ onGetStarted }) {
 
       {/* How It Works */}
         <div className="max-w-4xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How It Works</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Notice. Commit. Act. Repeat. </h2>
           <div className="bg-white rounded-3xl shadow-xl p-10">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="flex-1">
@@ -36,7 +36,7 @@ export default function LandingPage({ onGetStarted }) {
                   <h3 className="text-xl font-semibold text-gray-900">Capture Your Session</h3>
                 </div>
                 <p className="text-gray-600 ml-11">
-                  Type your notes, create a voice recording, or upload a photo right from your journal to Virgil. Whatever method feels best for you.
+                  Type your notes, create a voice recording, or upload a photo from your journal. Whatever method feels best for you.
                 </p>
               </div>
               <div className="hidden md:block text-gray-300 text-3xl">→</div>
@@ -101,7 +101,7 @@ export default function LandingPage({ onGetStarted }) {
 
         {/* Social Proof / CTA */}
         <div className="text-center mt-16 max-w-2xl mx-auto">
-          <p className="text-gray-500 text-sm mb-6">Trusted by people committed to personal growth</p>
+          <p className="text-gray-500 text-sm mb-6">Start keeping promises to yourself. Quietly, consistently and for real.</p>
           <div className="flex justify-center items-center gap-4 mb-8">
             <div className="flex -space-x-2">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 border-2 border-white"></div>
