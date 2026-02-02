@@ -52,7 +52,7 @@ export default function LandingPage({ onGetStarted }) {
             Insight isn't the breakthrough. Action is. 
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Virgil turns your insights from personal development sessions like therapy or meditation into follow through, so your growth shows up in real life. 
+            Virgil turns your insights from personal development sessions like therapy or meditation into consistent follow through, so your growth becomes real. 
           </p>
           <button
             onClick={onGetStarted}
