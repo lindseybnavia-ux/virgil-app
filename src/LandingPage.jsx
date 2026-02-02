@@ -87,7 +87,6 @@ export default function LandingPage({ onGetStarted }) {
                 Virgil exists for the moments in between sessions, when most tools disappear.
               </p>
             </div>
-
         </div>
         
   {/* Testimonial Carousel */}
