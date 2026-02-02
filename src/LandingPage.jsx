@@ -71,9 +71,6 @@ export default function LandingPage({ onGetStarted }) {
 
    {/* Problem Statement */}
         <div className="max-w-3xl mx-auto mb-16 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-            Insight isn't the problem. Follow-through is.
-          </h2>
           
           <div className="space-y-4 text-xl text-gray-600">
             <p>
@@ -86,7 +83,7 @@ export default function LandingPage({ onGetStarted }) {
               The insight fades. The note gets buried. And the same promises quietly expire.
             </p>
             <p className="text-gray-900 font-semibold pt-4">
-              Virgil exists for the moment after the realization — when most tools disappear.
+              Virgil exists for the moments between sessions — when most tools disappear.
             </p>
           </div>
         </div>
