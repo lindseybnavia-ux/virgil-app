@@ -83,7 +83,7 @@ export default function LandingPage({ onGetStarted }) {
               The insight fades. The note gets buried. And the same promises quietly expire.
             </p>
             <p className="text-gray-900 font-semibold pt-4">
-              Virgil exists for the moments between sessions — when most tools disappear.
+              Virgil exists for the moments between sessions, when most tools disappear.
             </p>
           </div>
         </div>
