@@ -88,19 +88,6 @@ export default function LandingPage({ onGetStarted }) {
               </p>
             </div>
 
-            <div className="mt-12 pt-12 border-t border-blue-700 space-y-4 text-lg text-blue-100 max-w-3xl mx-auto">
-              <p className="font-semibold text-white">Virgil is not a journal.</p>
-              <p>
-                Journals capture thoughts. Task managers track tasks. Habit apps gamify behavior.
-              </p>
-              <p className="text-white font-semibold">
-                Virgil does something different.
-              </p>
-              <p>
-                It helps you generate real, doable next steps from your sessions so you can be accountable to yourself.
-              </p>
-            </div>
-          </div>
         </div>
         
   {/* Testimonial Carousel */}
