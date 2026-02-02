@@ -69,25 +69,29 @@ export default function LandingPage({ onGetStarted }) {
           </div>
         </div>
 
-                {/* Problem Statement */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <div className="bg-gradient-to-br from-slate-900 to-blue-900 rounded-3xl p-12 md:p-16 text-white">
-            
-            <div className="space-y-6 text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
-              <p>
-                You think deeply, you do the work. You notice patterns. You have moments of real clarity.
-              </p>
-              <p>
-                And then life happens.
-              </p>
-              <p>
-                The insight fades. The note gets buried. And the same promises quietly expire.
-              </p>
-              <p className="text-white font-semibold pt-4">
-                Virgil exists for the moments in between sessions, when most tools disappear.
-              </p>
-            </div>
+   {/* Problem Statement */}
+        <div className="max-w-3xl mx-auto mb-16 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            Insight isn't the problem. Follow-through is.
+          </h2>
+          
+          <div className="space-y-4 text-xl text-gray-600">
+            <p>
+              You think deeply, you do the work. You notice patterns. You have moments of real clarity.
+            </p>
+            <p>
+              And then life happens.
+            </p>
+            <p>
+              The insight fades. The note gets buried. And the same promises quietly expire.
+            </p>
+            <p className="text-gray-900 font-semibold pt-4">
+              Virgil exists for the moment after the realization — when most tools disappear.
+            </p>
+          </div>
         </div>
+
+ 
         
   {/* Testimonial Carousel */}
         <div className="max-w-4xl mx-auto mb-16">
