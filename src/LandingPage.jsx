@@ -70,7 +70,11 @@ export default function LandingPage({ onGetStarted }) {
           </button>
         </div>
       </div>
-    </div>
+</div>
+
+      {/* Main Content Container */}
+      <div className="container mx-auto px-4">
+       
       {/* How It Works */}
         <div className="max-w-4xl mx-auto mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Capture. Commit. Act. Repeat. </h2>
@@ -231,11 +235,11 @@ export default function LandingPage({ onGetStarted }) {
           </button>
         </div>
 
-        {/* Footer */}
+    {/* Footer */}
         <div className="text-center py-8 border-t border-gray-200 mt-16">
           <p className="text-gray-500 text-sm">© 2026 Virgil. Turn your insights into action.</p>
         </div>
-      </div>
-    </div>
+      </div>  {/* Close container */}
+    </div>  {/* Close page wrapper */}
   );
 }
