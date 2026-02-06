@@ -42,9 +42,16 @@ export default function LandingPage({ onGetStarted }) {
           </div>
         </div>
       </header>
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center max-w-4xl mx-auto mb-16">
+ {/* Hero Section */}
+      <div className="container mx-auto px-4 py-16 relative">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 -mx-4 opacity-20 bg-cover bg-center rounded-3xl"
+          style={{ backgroundImage: "url('/hero-bg.png')" }}
+        />
+        
+        {/* Content */}
+        <div className="relative text-center max-w-4xl mx-auto mb-16">
           <div className="w-20 h-20 bg-gradient-to-br from-blue-900 to-blue-700 rounded-3xl flex items-center justify-center mx-auto mb-6">
             <Brain className="w-10 h-10 text-white" />
           </div>
@@ -62,6 +69,7 @@ export default function LandingPage({ onGetStarted }) {
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
+      </div>
 
       {/* How It Works */}
         <div className="max-w-4xl mx-auto mb-16">
