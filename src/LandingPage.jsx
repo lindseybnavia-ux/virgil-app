@@ -70,7 +70,6 @@ export default function LandingPage({ onGetStarted }) {
           </button>
         </div>
       </div>
-</div>
 
       {/* Main Content Container */}
       <div className="container mx-auto px-4">
