@@ -238,7 +238,7 @@ export default function LandingPage({ onGetStarted }) {
         <div className="text-center py-8 border-t border-gray-200 mt-16">
           <p className="text-gray-500 text-sm">© 2026 Virgil. Turn your insights into action.</p>
         </div>
-      </div>  {/* Close container */}
-    </div>  {/* Close page wrapper */}
+   </div>
+    </div>
   );
 }
