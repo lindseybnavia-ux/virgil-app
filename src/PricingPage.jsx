@@ -8,13 +8,13 @@ export default function PricingPage() {
     monthly: {
       price: 10,
       period: 'month',
-      stripeLink: 'https://buy.stripe.com/YOUR_MONTHLY_LINK' // Replace with actual Stripe link
+      stripeLink: 'https://buy.stripe.com/3cI9AT6zZ4Rd94S4JG2cg02'
     },
     annual: {
       price: 96,
       period: 'year',
-      savings: '$24',
-      stripeLink: 'https://buy.stripe.com/YOUR_ANNUAL_LINK' // Replace with actual Stripe link
+      savings: '30%',
+      stripeLink: 'https://buy.stripe.com/aFadR94rR4Rdch46RO2cg01'
     }
   };
 
@@ -119,7 +119,7 @@ export default function PricingPage() {
               </li>
             </ul>
 
-            {/* CTA Button */}
+{/* CTA Button */}
             
               href={currentPlan.stripeLink}
               className="block w-full bg-gradient-to-r from-blue-900 to-blue-800 text-white py-4 rounded-lg font-semibold hover:shadow-2xl transition-all text-center"
