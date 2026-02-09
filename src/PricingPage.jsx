@@ -25,12 +25,12 @@ export default function PricingPage() {
       {/* Header */}
       <header className="border-b border-gray-200 bg-white/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-700 rounded-xl flex items-center justify-center">
-              <Brain className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold text-gray-900">Virgil</span>
-          </div>
+        <a href="https://tryvirgil.co" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+  <div className="w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-700 rounded-xl flex items-center justify-center">
+    <Brain className="w-5 h-5 text-white" />
+  </div>
+  <span className="text-xl font-bold text-gray-900">Virgil</span>
+</a>
         </div>
       </header>
 
@@ -66,7 +66,7 @@ export default function PricingPage() {
               Annual
               {billingPeriod === 'annual' && (
                 <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs px-2 py-0.5 rounded-full">
-                  Save $24
+                  Save $33
                 </span>
               )}
             </button>
@@ -76,11 +76,13 @@ export default function PricingPage() {
           <div className="bg-white rounded-2xl shadow-xl border-2 border-blue-900 p-8">
             {/* Badge */}
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-gray-900">Virgil Pro</h2>
-              <span className="bg-blue-100 text-blue-900 text-xs font-semibold px-3 py-1 rounded-full">
-                Best Value
-              </span>
-            </div>
+  <h2 className="text-2xl font-bold text-gray-900">Virgil Pro</h2>
+  {billingPeriod === 'annual' && (
+    <span className="bg-blue-100 text-blue-900 text-xs font-semibold px-3 py-1 rounded-full">
+      Best Value
+    </span>
+  )}
+</div>
 
             <p className="text-gray-600 mb-6">Turn insights into action</p>
 
