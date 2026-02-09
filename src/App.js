@@ -5,22 +5,35 @@ import LandingPage from './LandingPage';
 import AuthScreen from './AuthScreen';
 import VirgilApp from './VirgilApp';
 import { LogOut } from 'lucide-react';
+import PricingPage from './PricingPage';
 
 export default function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showAuth, setShowAuth] = useState(false);
+  const [hasPaid, setHasPaid] = useState(false);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-      if (currentUser) {
-        setShowAuth(true); // Auto-show app if logged in
-      }
-    });
-    return () => unsubscribe();
-  }, []);
+useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+    setLoading(false);
+    if (currentUser) {
+      setShowAuth(true); // Auto-show app if logged in
+    }
+  });
+  return () => unsubscribe();
+}, []);
+
+useEffect(() => {
+  // Check URL for successful payment
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('session_id')) {
+    // Payment successful!
+    setHasPaid(true);
+    // Clean up URL
+    window.history.replaceState({}, '', window.location.pathname);
+  }
+}, []);
 
   const handleSignOut = async () => {
     try {
@@ -42,18 +55,23 @@ export default function App() {
     );
   }
 
-  // Show landing page if not logged in and haven't clicked "Get Started"
-  if (!user && !showAuth) {
-    return <LandingPage onGetStarted={() => setShowAuth(true)} />;
-  }
+// Show landing page if not logged in and haven't clicked "Get Started"
+if (!user && !showAuth) {
+  return <LandingPage onGetStarted={() => setShowAuth(true)} />;
+}
 
-  // Show auth screen if clicked "Get Started" but not logged in
-  if (!user) {
-    return <AuthScreen onAuthSuccess={() => setUser(auth.currentUser)} />;
-  }
+// Show auth screen if clicked "Get Started" but not logged in
+if (!user) {
+  return <AuthScreen onAuthSuccess={() => setUser(auth.currentUser)} />;
+}
 
-  // Show app if logged in
-  return (
+// Show pricing page if logged in but hasn't paid
+if (user && !hasPaid) {
+  return <PricingPage />;
+}
+
+// Show app if logged in and paid
+return (
     <div className="relative">
       <button
         onClick={handleSignOut}
