@@ -53,7 +53,7 @@ export default function App() {
     } catch (error) {
       console.error('Error signing out:', error);
     }
-  };
+  }; 
 
   if (loading || hasPaid === null) {
     return (
