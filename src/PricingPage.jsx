@@ -121,7 +121,8 @@ export default function PricingPage() {
 
 {/* CTA Button */}
             
-              href={currentPlan.stripeLink}
+              <a
+                href={currentPlan.stripeLink}
               className="block w-full bg-gradient-to-r from-blue-900 to-blue-800 text-white py-4 rounded-lg font-semibold hover:shadow-2xl transition-all text-center"
             >
               <span className="flex items-center justify-center gap-2">
