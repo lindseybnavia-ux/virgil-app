@@ -6,12 +6,12 @@ export default function PricingPage() {
 
   const pricing = {
     monthly: {
-      price: 10,
+      price: 8.99,
       period: 'month',
       stripeLink: 'https://buy.stripe.com/3cI9AT6zZ4Rd94S4JG2cg02'
     },
     annual: {
-      price: 96,
+      price: 75,
       period: 'year',
       savings: '30%',
       stripeLink: 'https://buy.stripe.com/aFadR94rR4Rdch46RO2cg01'
