@@ -82,7 +82,7 @@ console.log('DEBUG - Should show pricing?', user && !hasPaid);
 
   // Show pricing page if logged in but hasn't paid
   if (user && !hasPaid) {
-    return <PricingPage />;
+    return <PricingPage onSignOut={handleSignOut} />;
   }
 
   // Show app if logged in and paid
