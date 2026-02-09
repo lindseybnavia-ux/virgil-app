@@ -4,7 +4,7 @@ import { auth } from './firebase-config';
 import { Brain } from 'lucide-react';
 
 export default function AuthScreen({ onAuthSuccess }) {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
