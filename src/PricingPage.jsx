@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Brain, Check, ArrowRight } from 'lucide-react';
 
-export default function PricingPage() {
+export default function PricingPage({ onSignOut }) {
   const [billingPeriod, setBillingPeriod] = useState('monthly');
 
   const pricing = {
