@@ -18,7 +18,7 @@ export default function PricingPage() {
     }
   };
 
-  const currentPlan = pricing[billingPeriod];
+  const currentPlan = pricing[billingPeriod]; 
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-50">
