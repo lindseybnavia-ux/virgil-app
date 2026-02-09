@@ -72,6 +72,10 @@ export default function App() {
   }
 
   // Show auth screen if clicked "Get Started" but not logged in
+console.log('DEBUG - User:', user?.email);
+console.log('DEBUG - hasPaid:', hasPaid);
+console.log('DEBUG - Should show pricing?', user && !hasPaid);
+  
   if (!user) {
     return <AuthScreen onAuthSuccess={() => setUser(auth.currentUser)} />;
   }
