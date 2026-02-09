@@ -77,8 +77,8 @@ console.log('DEBUG - hasPaid:', hasPaid);
 console.log('DEBUG - Should show pricing?', user && !hasPaid);
   
   if (!user) {
-    return <AuthScreen onAuthSuccess={() => setUser(auth.currentUser)} />;
-  }
+  return <AuthScreen onAuthSuccess={() => setUser(auth.currentUser)} defaultMode="signup" />;
+}
 
   // Show pricing page if logged in but hasn't paid
   if (user && !hasPaid) {
