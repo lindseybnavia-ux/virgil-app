@@ -470,6 +470,7 @@ useEffect(() => {
   };
 
   const deleteTodo = async (todoId) => {
+    await removeSyncedEvent(todoId);
     const updatedTodos = todos.filter(todo => todo.id !== todoId);
     setTodos(updatedTodos);
     await saveData(sessions, updatedTodos);
