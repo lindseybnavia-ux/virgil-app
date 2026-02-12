@@ -113,7 +113,7 @@ export default function LandingPage({ onGetStarted }) {
               And then life happens.
             </p>
             <p>
-              The insight fades. The note gets buried. And the same promises quietly expire.
+              The insight fades. The note gets buried. And the same promises slowly expire.
             </p>
             <p className="text-gray-900 font-semibold pt-4">
               Virgil exists for the moments between sessions, when most tools disappear.
@@ -229,7 +229,7 @@ export default function LandingPage({ onGetStarted }) {
             onClick={onGetStarted}
             className="bg-gradient-to-r from-blue-900 to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl transition-all inline-flex items-center gap-3 group"
           >
-            Join the Beta
+            Get Started
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
