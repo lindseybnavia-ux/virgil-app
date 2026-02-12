@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { firebaseStorage } from './firebase-storage';
+import { googleCalendar } from './google-calendar';
 import { api } from './api';
 import { Plus, Brain, CheckCircle2, Circle, Trash2, Calendar, Sparkles, TrendingUp, MessageSquare, ChevronLeft, ChevronRight, ChevronDown, Edit2, Check, X, Mic, MicOff, Upload, User, Lightbulb } from 'lucide-react';
 
@@ -36,11 +37,55 @@ export default function VirgilApp({ userId, userEmail }) {
   const [generatingInsights, setGeneratingInsights] = useState(false);
   const [selectedInsightIndex, setSelectedInsightIndex] = useState(0);
   const [showOnboardingTip, setShowOnboardingTip] = useState(true);
+  const [googleCalendarConnected, setGoogleCalendarConnected] = useState(false);
+  const [syncingTodoId, setSyncingTodoId] = useState(null);
+  const [syncingAll, setSyncingAll] = useState(false);
+  const [syncedEventMap, setSyncedEventMap] = useState({});
 
 useEffect(() => {
   loadData();
   loadUserProfile();
 }, []);
+
+// Check Google Calendar connection status on load
+useEffect(() => {
+  const checkGoogleCalendar = async () => {
+    if (userId) {
+      const connected = await googleCalendar.isConnected(userId);
+      setGoogleCalendarConnected(connected);
+    }
+  };
+  checkGoogleCalendar();
+
+  // Load synced event map from Firebase
+  const loadSyncedEvents = async () => {
+    try {
+      const result = await firebaseStorage.get('virgil-synced-events').catch(() => null);
+      if (result?.value) {
+        setSyncedEventMap(JSON.parse(result.value));
+      }
+    } catch (error) {
+      console.error('Error loading synced events:', error);
+    }
+  };
+  loadSyncedEvents();
+}, [userId]);
+
+// Detect Google Calendar OAuth redirect
+useEffect(() => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const gcalStatus = urlParams.get('google_calendar');
+  if (gcalStatus === 'connected') {
+    setGoogleCalendarConnected(true);
+    window.history.replaceState({}, '', window.location.pathname);
+  } else if (gcalStatus === 'denied') {
+    alert('Google Calendar connection was cancelled.');
+    window.history.replaceState({}, '', window.location.pathname);
+  } else if (gcalStatus === 'error') {
+    alert('Failed to connect Google Calendar. Please try again.');
+    window.history.replaceState({}, '', window.location.pathname);
+  }
+}, []);  
 
 useEffect(() => {
   if (showNewSessionModal && !newSession.date) {
@@ -689,6 +734,88 @@ const getTodosForDate = (date) => {
            date.getFullYear() === today.getFullYear();
   };
 
+  const saveSyncedEventMap = async (newMap) => {
+  setSyncedEventMap(newMap);
+  try {
+    await firebaseStorage.set('virgil-synced-events', JSON.stringify(newMap));
+  } catch (error) {
+    console.error('Error saving synced events:', error);
+  }
+};
+
+const syncTodoToCalendar = async (todo) => {
+  if (!googleCalendarConnected) {
+    googleCalendar.connect(userId);
+    return;
+  }
+
+  setSyncingTodoId(todo.id);
+  try {
+    const sourceSession = sessions.find(s => s.id === todo.sessionId);
+    const result = await googleCalendar.addEvent(userId, todo, sourceSession?.type);
+    const newMap = { ...syncedEventMap, [todo.id]: result.googleEventId };
+    await saveSyncedEventMap(newMap);
+  } catch (error) {
+    if (error.message === 'NOT_CONNECTED' || error.message === 'TOKEN_EXPIRED') {
+      setGoogleCalendarConnected(false);
+      alert('Google Calendar connection expired. Please reconnect.');
+    } else {
+      alert('Failed to sync to Google Calendar. Please try again.');
+    }
+    console.error('Sync error:', error);
+  } finally {
+    setSyncingTodoId(null);
+  }
+};
+
+const syncAllTodosToCalendar = async () => {
+  if (!googleCalendarConnected) {
+    googleCalendar.connect(userId);
+    return;
+  }
+
+  const unsyncedTodos = todos.filter(t => !t.completed && !syncedEventMap[t.id]);
+  if (unsyncedTodos.length === 0) {
+    alert('All action items are already synced to Google Calendar!');
+    return;
+  }
+
+  setSyncingAll(true);
+  try {
+    const results = await googleCalendar.addEvents(userId, unsyncedTodos);
+    const newMap = { ...syncedEventMap };
+    results.forEach(r => {
+      newMap[r.todoId] = r.googleEventId;
+    });
+    await saveSyncedEventMap(newMap);
+    alert(`${results.length} action item(s) synced to Google Calendar!`);
+  } catch (error) {
+    if (error.message === 'NOT_CONNECTED' || error.message === 'TOKEN_EXPIRED') {
+      setGoogleCalendarConnected(false);
+      alert('Google Calendar connection expired. Please reconnect.');
+    } else {
+      alert('Failed to sync to Google Calendar. Please try again.');
+    }
+    console.error('Bulk sync error:', error);
+  } finally {
+    setSyncingAll(false);
+  }
+};
+
+const removeSyncedEvent = async (todoId) => {
+  const googleEventId = syncedEventMap[todoId];
+  if (!googleEventId) return;
+
+  try {
+    await googleCalendar.removeEvent(userId, googleEventId);
+    const newMap = { ...syncedEventMap };
+    delete newMap[todoId];
+    await saveSyncedEventMap(newMap);
+  } catch (error) {
+    console.error('Error removing synced event:', error);
+  }
+};
+  
   const stats = getStats();
 
   if (loading) {
@@ -714,6 +841,26 @@ const getTodosForDate = (date) => {
               </div>
             </div>
             <div className="flex items-center gap-3">
+              <button
+  onClick={() => {
+    if (googleCalendarConnected) {
+      alert('Google Calendar is connected! Your action items can be synced.');
+    } else {
+      googleCalendar.connect(userId);
+    }
+  }}
+  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+    googleCalendarConnected
+      ? 'bg-green-100 hover:bg-green-200 text-green-800'
+      : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+  }`}
+  title={googleCalendarConnected ? 'Google Calendar connected' : 'Connect Google Calendar'}
+>
+  <Calendar className="w-5 h-5" />
+  <span className="hidden sm:inline text-sm font-medium">
+    {googleCalendarConnected ? 'Calendar ✓' : 'Connect Calendar'}
+  </span>
+</button>
               {userProfile && (
                 <button
                   onClick={editProfile}
@@ -984,6 +1131,22 @@ const getTodosForDate = (date) => {
               </div>
             ) : (
               <>
+                <div className="bg-white rounded-xl shadow-lg p-4 flex items-center justify-between">
+  <div className="flex items-center gap-2 text-sm text-gray-600">
+    <Calendar className="w-4 h-4" />
+    <span>
+      {Object.keys(syncedEventMap).length} of {todos.filter(t => !t.completed).length} items synced
+    </span>
+  </div>
+  <button
+    onClick={syncAllTodosToCalendar}
+    disabled={syncingAll}
+    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-900 to-blue-800 text-white rounded-lg hover:shadow-lg transition-shadow disabled:opacity-50 text-sm font-medium"
+  >
+    <Calendar className="w-4 h-4" />
+    {syncingAll ? 'Syncing...' : 'Sync All to Calendar'}
+  </button>
+</div>
                 {['high', 'medium', 'low'].map(priority => {
                   const priorityTodos = todos.filter(t => t.priority === priority && !t.completed);
                   if (priorityTodos.length === 0) return null;
@@ -1118,6 +1281,20 @@ const getTodosForDate = (date) => {
                                           </button>
                                         ) : null;
                                       })()}
+                                      <button
+  onClick={() => syncTodoToCalendar(todo)}
+  disabled={syncingTodoId === todo.id || !!syncedEventMap[todo.id]}
+  className={`transition-colors ${
+    syncedEventMap[todo.id]
+      ? 'text-green-500 cursor-default'
+      : syncingTodoId === todo.id
+      ? 'text-blue-400 animate-spin'
+      : 'text-gray-400 hover:text-blue-900'
+  }`}
+  title={syncedEventMap[todo.id] ? 'Synced to Google Calendar' : 'Add to Google Calendar'}
+>
+  <Calendar className="w-5 h-5" />
+</button>
                                       <button
                                         onClick={() => startEditingTodoDetails(todo)}
                                         className="text-gray-400 hover:text-blue-900"
