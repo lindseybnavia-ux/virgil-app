@@ -235,19 +235,20 @@ export default function LandingPage({ onGetStarted, onNavigate }) {
         </div>
 
 
-        {/* Footer */}
-<div className="text-center py-8 border-t border-gray-200 mt-16">
-  <p className="text-gray-500 text-sm mb-3">© 2026 Virgil. Turn your insights into action.</p>
-  <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
-    <button onClick={() => onNavigate('privacy')} className="hover:text-blue-900 underline">
-      Privacy Policy
-    </button>
-    <span>·</span>
-    <button onClick={() => onNavigate('terms')} className="hover:text-blue-900 underline">
-      Terms of Service
-    </button>
-  </div>
-</div>
+      {/* Footer */}
+        <div className="text-center py-8 border-t border-gray-200 mt-16">
+          <p className="text-gray-500 text-sm mb-3">© 2026 Virgil. Turn your insights into action.</p>
+          <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
+            <button onClick={() => onNavigate('privacy')} className="hover:text-blue-900 underline">
+              Privacy Policy
+            </button>
+            <span>·</span>
+            <button onClick={() => onNavigate('terms')} className="hover:text-blue-900 underline">
+              Terms of Service
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
