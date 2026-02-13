@@ -20,7 +20,7 @@
  *   await googleCalendar.removeEvent(userId, googleEventId);
  */
 
-const API_BASE = process.env.REACT_APP_API_URL || 'https://virgil-backend-theta.vercel.app';
+const API_BASE = process.env.REACT_APP_API_URL || 'https://virgil-backend-psi.vercel.app';
 
 export const googleCalendar = {
   /**
