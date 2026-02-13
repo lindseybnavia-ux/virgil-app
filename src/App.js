@@ -7,12 +7,15 @@ import AuthScreen from './AuthScreen';
 import VirgilApp from './VirgilApp';
 import { LogOut } from 'lucide-react';
 import PricingPage from './PricingPage';
+import PrivacyPolicy from './PrivacyPolicy';
+import TermsOfService from './TermsOfService';
 
 export default function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showAuth, setShowAuth] = useState(false);
   const [hasPaid, setHasPaid] = useState(null); // null = checking
+  const [currentPage, setCurrentPage] = useState(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -66,9 +69,15 @@ export default function App() {
     );
   }
 
+  if (currentPage === 'privacy') {
+  return <PrivacyPolicy onBack={() => setCurrentPage(null)} />;
+}
+if (currentPage === 'terms') {
+  return <TermsOfService onBack={() => setCurrentPage(null)} />;
+}
   // Show landing page if not logged in and haven't clicked "Get Started"
   if (!user && !showAuth) {
-    return <LandingPage onGetStarted={() => setShowAuth(true)} />;
+    return <LandingPage onGetStarted={() => setShowAuth(true)} onNavigate={(page) => setCurrentPage(page)} />;
   }
 
   // Show auth screen if clicked "Get Started" but not logged in
