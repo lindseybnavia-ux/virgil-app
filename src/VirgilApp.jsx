@@ -845,7 +845,12 @@ const removeSyncedEvent = async (todoId) => {
               <button
   onClick={() => {
     if (googleCalendarConnected) {
-      alert('Google Calendar is connected! Your action items can be synced.');
+      if (window.confirm('Google Calendar is connected. Would you like to disconnect?')) {
+        setGoogleCalendarConnected(false);
+        setSyncedEventMap({});
+        firebaseStorage.set('virgil-synced-events', JSON.stringify({}));
+        alert('Google Calendar disconnected. You can reconnect anytime.');
+      }
     } else {
       googleCalendar.connect(userId);
     }
