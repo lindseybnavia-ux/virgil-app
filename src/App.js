@@ -15,7 +15,10 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [showAuth, setShowAuth] = useState(false);
   const [hasPaid, setHasPaid] = useState(null); // null = checking
-  const [currentPage, setCurrentPage] = useState(null);
+  const [currentPage, setCurrentPage] = useState(() => {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get('page') || null;
+});
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
