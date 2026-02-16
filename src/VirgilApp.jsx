@@ -398,10 +398,7 @@ useEffect(() => {
       return;
     }
 
-    const session = {
-      id: Date.now(),
-      ...newSession,
-      createdAt: new Date().toISOString()
+   const session = { id: Date.now(), ...newSession, coreTheme: null, createdAt: new Date().toISOString() 
     };
 
     const updatedSessions = [...sessions, session];
@@ -413,6 +410,20 @@ useEffect(() => {
     setIsProcessingPhoto(false);
     setShowNewSessionModal(false);
     setSessionError('');
+
+    // Generate core theme in background
+(async () => {
+  try {
+    const theme = await api.identifyCoreTheme(session.type, session.notes);
+    setSessions(prev => {
+      const updated = prev.map(s => s.id === session.id ? { ...s, coreTheme: theme } : s);
+      firebaseStorage.set('virgil-sessions', JSON.stringify(updated));
+      return updated;
+    });
+  } catch (error) {
+    console.error('Error generating core theme:', error);
+  }
+})();
     
     // Check if this unlocks insights (every 10 sessions: 10, 20, 30, etc)
     const canGenerateInsights = updatedSessions.length % 10 === 0 && updatedSessions.length > 0;
@@ -1422,7 +1433,13 @@ const removeSyncedEvent = async (todoId) => {
                                 {completedCount}/{totalCount} completed
                               </span>
                             )}
-                          </div>
+                         </div>
+                          {session.coreTheme && (
+                            <div className="flex items-start gap-2 mt-2 mb-1">
+                              <span className="flex-shrink-0 px-2.5 py-1 bg-purple-50 border border-purple-200 text-purple-800 rounded-full text-xs font-semibold uppercase tracking-wide">Core Theme</span>
+                              <p className="text-sm text-slate-600 pt-0.5">{session.coreTheme}</p>
+                            </div>
+                          )}
                           <p className="text-gray-500 text-sm">{(() => {
                             const [year, month, day] = session.date.split('-');
                             const date = new Date(year, month - 1, day);
