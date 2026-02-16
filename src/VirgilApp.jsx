@@ -843,9 +843,10 @@ const removeSyncedEvent = async (todoId) => {
             </div>
             <div className="flex items-center gap-3">
               <button
-  onClick={() => {
+  onClick={async () => {
     if (googleCalendarConnected) {
       if (window.confirm('Google Calendar is connected. Would you like to disconnect?')) {
+        await googleCalendar.disconnect(userId);
         setGoogleCalendarConnected(false);
         setSyncedEventMap({});
         firebaseStorage.set('virgil-synced-events', JSON.stringify({}));
