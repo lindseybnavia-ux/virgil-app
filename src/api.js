@@ -32,5 +32,15 @@ export const api = {
     if (!response.ok) throw new Error('Failed to generate insights');
     const data = await response.json();
     return data.insights;
+  },
+  async identifyCoreTheme(sessionType, notes) {
+    const response = await fetch(`${API_BASE_URL}/api/identify-theme`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sessionType, notes })
+    });
+    if (!response.ok) throw new Error('Failed to identify theme');
+    const data = await response.json();
+    return data.theme;
   }
 };
