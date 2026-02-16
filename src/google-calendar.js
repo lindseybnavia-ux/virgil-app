@@ -155,5 +155,17 @@ export const googleCalendar = {
     }
 
     return await res.json();
+  },
+
+  async disconnect(userId) {
+    try {
+      await fetch(`${API_BASE}/api/google-disconnect`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId })
+      });
+    } catch (error) {
+      console.error('Error disconnecting Google Calendar:', error);
+    }
   }
 };
