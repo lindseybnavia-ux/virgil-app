@@ -1,0 +1,172 @@
+/* ─── Virgil Brand Restyle ─── */
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* ─── Global Defaults ─── */
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif !important;
+  background-color: #FDFCF8 !important;
+  color: #0F172A;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Headings: Playfair Display ─── */
+h1, h2, h3, h4, h5, h6,
+[class*="text-2xl"],
+[class*="text-3xl"],
+[class*="text-4xl"],
+[class*="text-5xl"] {
+  font-family: 'Playfair Display', serif !important;
+}
+
+/* ─── Background Override: warm cream instead of blue-50 gradients ─── */
+.min-h-screen {
+  background-color: #FDFCF8 !important;
+  background-image: none !important;
+}
+
+/* Override any bg-gradient-to-br from-blue-50 patterns */
+[class*="bg-gradient-to-br"][class*="from-blue-50"],
+[class*="bg-gradient-to-b"][class*="from-blue-50"] {
+  background: #FDFCF8 !important;
+}
+
+/* ─── Cards: cleaner white with subtle borders ─── */
+[class*="rounded-2xl"][class*="shadow"] {
+  background-color: white !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ─── Primary buttons: blue-900 pill shape ─── */
+button[class*="bg-blue-900"],
+button[class*="bg-gradient-to-r"][class*="from-blue-900"] {
+  background: #1e3a8a !important;
+  background-image: none !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 500 !important;
+}
+
+button[class*="bg-blue-900"]:hover,
+button[class*="bg-gradient-to-r"][class*="from-blue-900"]:hover {
+  background: #1e40af !important;
+}
+
+/* ─── Header logo area ─── */
+[class*="bg-gradient-to-br"][class*="from-blue-900"][class*="rounded-xl"],
+[class*="bg-gradient-to-br"][class*="from-blue-900"][class*="rounded-lg"] {
+  background: #1e3a8a !important;
+  border-radius: 0.75rem !important;
+}
+
+/* ─── Nav tabs: pill style ─── */
+[class*="rounded-xl"][class*="bg-blue-900"] {
+  background: #1e3a8a !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ─── Stat cards: warmer tones ─── */
+[class*="bg-blue-50"] {
+  background-color: #eff6ff !important;
+}
+
+/* ─── Priority badges ─── */
+[class*="bg-red-100"] {
+  background-color: #fef2f2 !important;
+  border: 1px solid #fecaca !important;
+}
+
+[class*="bg-yellow-100"],
+[class*="bg-amber-100"] {
+  background-color: #fffbeb !important;
+  border: 1px solid #fde68a !important;
+}
+
+[class*="bg-green-100"] {
+  background-color: #f0fdf4 !important;
+  border: 1px solid #bbf7d0 !important;
+}
+
+/* ─── Calendar connect button when connected ─── */
+button[class*="bg-green-50"] {
+  border: 1px solid #bbf7d0 !important;
+  border-radius: 9999px !important;
+}
+
+/* ─── Focus rings ─── */
+input:focus, textarea:focus, select:focus {
+  --tw-ring-color: #1e3a8a !important;
+  border-color: #1e3a8a !important;
+}
+
+/* ─── Session type tags ─── */
+[class*="bg-blue-100"][class*="text-blue-800"] {
+  background-color: #eff6ff !important;
+  border: 1px solid #bfdbfe !important;
+  border-radius: 9999px !important;
+}
+
+/* ─── Modal overlay ─── */
+[class*="bg-black"][class*="bg-opacity-50"] {
+  background-color: rgba(15, 23, 42, 0.6) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* ─── Modal content ─── */
+[class*="bg-black"][class*="bg-opacity-50"] > div > div {
+  background-color: #FDFCF8 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 1rem !important;
+}
+
+/* ─── Onboarding banners: refine ─── */
+[class*="bg-blue-900"][class*="rounded-2xl"] {
+  background: #1e3a8a !important;
+  border-radius: 1rem !important;
+}
+
+[class*="bg-green-700"][class*="rounded-2xl"] {
+  border-radius: 1rem !important;
+}
+
+/* ─── Calendar day cells ─── */
+button[class*="bg-blue-900"][class*="aspect-square"] {
+  border-radius: 0.5rem !important;
+}
+
+/* ─── Insight view borders ─── */
+[class*="border-l-4"][class*="border-blue-600"] {
+  border-left-color: #1e3a8a !important;
+}
+
+/* ─── Scrollbar styling ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FDFCF8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ─── Celebration animation ─── */
+@keyframes celebrate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* ─── Smooth transitions ─── */
+button, a, input, select, textarea {
+  transition: all 0.2s ease !important;
+}
