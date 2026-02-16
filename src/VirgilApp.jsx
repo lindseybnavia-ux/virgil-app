@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { firebaseStorage } from './firebase-storage';
 import { googleCalendar } from './google-calendar';
 import { api } from './api';
+import './virgil-brand.css';
 import { Plus, Brain, CheckCircle2, Circle, Trash2, Calendar, Sparkles, TrendingUp, MessageSquare, ChevronLeft, ChevronRight, ChevronDown, Edit2, Check, X, Mic, MicOff, Upload, User, Lightbulb } from 'lucide-react';
 
 export default function VirgilApp({ userId, userEmail }) {
