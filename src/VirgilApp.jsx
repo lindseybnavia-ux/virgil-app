@@ -2104,9 +2104,10 @@ const removeSyncedEvent = async (todoId) => {
                   ) : (
                     <label className="block">
                       <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handlePhotoUpload}
+                      type="file"
+                      accept="image/*"
+                      capture="environment"
+                      onChange={handlePhotoUpload}
                         className="hidden"
                         disabled={isProcessingPhoto}
                       />
