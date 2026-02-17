@@ -334,7 +334,31 @@ useEffect(() => {
       reader.readAsDataURL(file);
 
       reader.onload = async () => {
-        const base64Image = reader.result;
+        let base64Image = reader.result;
+        
+        // Compress large images
+        try {
+          const img = new Image();
+          await new Promise((resolve, reject) => {
+            img.onload = resolve;
+            img.onerror = reject;
+            img.src = base64Image;
+          });
+          
+          const maxDim = 1500;
+          if (img.width > maxDim || img.height > maxDim) {
+            const canvas = document.createElement('canvas');
+            const ratio = Math.min(maxDim / img.width, maxDim / img.height);
+            canvas.width = img.width * ratio;
+            canvas.height = img.height * ratio;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            base64Image = canvas.toDataURL('image/jpeg', 0.85);
+          }
+        } catch (e) {
+          console.error('Image compression failed, using original:', e);
+        }
+        
         setUploadedPhoto(base64Image);
 
         try {
