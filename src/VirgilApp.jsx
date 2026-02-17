@@ -437,11 +437,19 @@ useEffect(() => {
     setActiveView('sessions');
     setExpandedSessionId(session.id);
     setTimeout(() => {
-      const sessionElement = document.getElementById(`session-${session.id}`);
-      if (sessionElement) {
-        sessionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const el = document.getElementById(`session-${session.id}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        // Retry if element isn't rendered yet
+        setTimeout(() => {
+          const el2 = document.getElementById(`session-${session.id}`);
+          if (el2) {
+            el2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 500);
       }
-    }, 200);
+    }, 600);
 
     // Generate core theme in background
 (async () => {
