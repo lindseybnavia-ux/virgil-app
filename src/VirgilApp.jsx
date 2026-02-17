@@ -436,6 +436,12 @@ useEffect(() => {
     setSessionError('');
     setActiveView('sessions');
     setExpandedSessionId(session.id);
+    setTimeout(() => {
+      const sessionElement = document.getElementById(`session-${session.id}`);
+      if (sessionElement) {
+        sessionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 200);
 
     // Generate core theme in background
 (async () => {
