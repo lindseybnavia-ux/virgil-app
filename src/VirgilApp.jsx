@@ -375,7 +375,7 @@ useEffect(() => {
           }));
         } catch (error) {
           console.error('Error extracting text from image:', error);
-          alert('Failed to extract text from the image. The photo has been uploaded but text extraction failed.');
+          alert('Failed to extract text: ' + error.message + ' | Type: ' + file.type);
         } finally {
           setIsProcessingPhoto(false);
         }
