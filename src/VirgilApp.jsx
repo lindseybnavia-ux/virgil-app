@@ -410,6 +410,8 @@ useEffect(() => {
     setIsProcessingPhoto(false);
     setShowNewSessionModal(false);
     setSessionError('');
+    setActiveView('sessions');
+    setExpandedSessionId(session.id);
 
     // Generate core theme in background
 (async () => {
