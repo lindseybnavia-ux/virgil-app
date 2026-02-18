@@ -1,0 +1,69 @@
+# Virgil
+
+> Virgil is a personal growth accountability app that helps users turn insights from therapy, coaching, meditation, breathwork, and journaling sessions into actionable steps. Users capture session notes via text, voice recording, or photo upload, then Virgil uses AI to identify core themes, generate personalized action items with due dates and priorities, and sync them to Google Calendar. Every 10 sessions, Virgil generates a comprehensive growth insights report analyzing recurring themes, patterns, breakthroughs, and recommended next steps. Founded by Lindsey Navia.
+
+## About
+
+- [tryvirgil.co](https://tryvirgil.co): Personal growth accountability web app
+- [Instagram](https://instagram.com/try.virgil): @try.virgil
+- [TikTok](https://tiktok.com/@try.virgil): @try.virgil
+- [Twitter/X](https://x.com/try_virgil): @try_virgil
+
+## What Virgil Does
+
+Virgil bridges the gap between insight and action for anyone engaged in personal growth work. The core workflow:
+
+1. **Capture** - Record session notes via typing, voice recording, or photo upload with automatic text extraction
+2. **Synthesize** - AI identifies the core theme of each session in one sentence
+3. **Act** - AI generates specific, prioritized action items with due dates from session notes
+4. **Track** - Action items sync to Google Calendar, with a built-in calendar view and completion tracking
+5. **Reflect** - Every 10 sessions, AI generates a comprehensive growth insights report with themes, patterns, breakthroughs, and recommendations
+
+### Supported Session Types
+
+Therapy, Breathwork, Meditation, Coaching, Journaling, Workshops, and custom user-defined types.
+
+### Key Features
+
+- Voice-to-text session recording
+- Photo upload with OCR text extraction
+- AI-powered core theme identification per session
+- AI-generated action items with priority levels and due dates
+- Google Calendar two-way sync
+- Growth insights reports every 10 sessions with pattern analysis
+- Session type filtering and tracking
+- Progress tracking with completion stats
+
+## Pricing
+
+- **7-day free trial** for all new users
+- **Monthly plan**: $8.99/month
+- **Annual plan**: $75/year (save 30%)
+
+## Expertise
+
+- Personal growth and self-development
+- Therapy and coaching session tracking
+- Mindfulness, meditation, and breathwork practices
+- Journaling and reflective practice
+- Accountability systems for behavioral change
+- AI-assisted personal development
+
+## Key Pages
+
+- [Home](https://tryvirgil.co): Landing page with product overview and signup
+- [Privacy Policy](https://tryvirgil.co/privacy.html): Data handling and privacy practices
+- [Terms of Service](https://tryvirgil.co/terms.html): Usage terms and conditions
+
+## Technology
+
+- Web app built with React, hosted on Vercel
+- Backend API on Vercel with Anthropic Claude AI
+- Firebase/Firestore for data storage
+- Google Calendar API integration
+- iOS app coming soon
+
+## Contact
+
+- Instagram DMs: [@try.virgil](https://instagram.com/try.virgil)
+- Twitter/X DMs: [@try_virgil](https://x.com/try_virgil)
