@@ -88,7 +88,7 @@ export default function LandingPage({ onGetStarted, onNavigate }) {
                     <div key={i} className={`w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-xs font-medium text-slate-600 ${['bg-slate-200', 'bg-slate-300', 'bg-slate-400'][i]}`}>{initials}</div>
                   ))}
                 </div>
-                <p>Trusted by 2,000+ early adopters</p>
+                <p>Trusted by early adopters</p>
               </div>
             </div>
 
@@ -163,7 +163,7 @@ export default function LandingPage({ onGetStarted, onNavigate }) {
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 style={{ fontFamily: "'Playfair Display', serif" }} className="text-3xl md:text-4xl font-semibold mb-6 text-slate-900">The "Insight Gap" is real.</h2>
             <p className="text-xl text-slate-600 leading-relaxed">
-              We spend hours in therapy, coaching, and journaling. We have profound realizations. But without a system to capture and operationalize them, 90% of these insights fade within 48 hours.
+              We spend hours in therapy, coaching, and journaling. We have profound realizations, but life happens and these are slowly lost. In fact, without action 90% of insights fade within 48 hours.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -236,7 +236,7 @@ export default function LandingPage({ onGetStarted, onNavigate }) {
                 <span className="flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-slate-900 font-bold border border-slate-200">2</span>
                 <h3 className="text-2xl font-bold text-slate-900">Synthesize & Distill</h3>
               </div>
-              <p className="text-lg text-slate-600 mb-6">Our AI acts as a second brain, sifting through the noise to find the signal. It identifies core themes, behavioral patterns, and key breakthroughs that might have slipped your mind.</p>
+              <p className="text-lg text-slate-600 mb-6">Our AI acts as a second brain, sifting through the noise to find the signal. It identifies core themes, and key breakthroughs that might have slipped your mind. </p>
               <ul className="space-y-3">
                 {['Automatic "Key Insight" extraction', 'Pattern recognition across multiple sessions', 'Weekly growth summaries'].map((item, i) => (
                   <li key={i} className="flex items-center gap-3 text-slate-700">
@@ -317,7 +317,7 @@ export default function LandingPage({ onGetStarted, onNavigate }) {
                 <span className="flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-slate-900 font-bold border border-slate-200">3</span>
                 <h3 className="text-2xl font-bold text-slate-900">Act & Follow Through</h3>
               </div>
-              <p className="text-lg text-slate-600 mb-6">Insights without action are just dreams. Virgil converts your insights into concrete tasks and syncs them directly to Google Calendar so nothing falls through the cracks.</p>
+              <p className="text-lg text-slate-600 mb-6">Insights without action are just dreams. Virgil converts your insights into concrete action items and syncs them directly to Google Calendar so nothing falls through the cracks.</p>
               <ul className="space-y-3">
                 {['One-click sync to Google Calendar', 'Gentle reminders for accountability', 'Progress tracking over time'].map((item, i) => (
                   <li key={i} className="flex items-center gap-3 text-slate-700">
@@ -399,9 +399,9 @@ export default function LandingPage({ onGetStarted, onNavigate }) {
               <span className="text-sm font-semibold text-blue-700 tracking-wider uppercase mb-4 block">Our Story</span>
               <h2 style={{ fontFamily: "'Playfair Display', serif" }} className="text-3xl md:text-4xl text-slate-900 mb-6">Why I Built Virgil</h2>
               <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
-                <p>After years of therapy and coaching, I had notebooks full of insights but no system to turn them into lasting change. I'd leave sessions feeling enlightened, only to forget everything by the next week.</p>
-                <p>I realized the problem wasn't the quality of the work—it was the lack of infrastructure to support it. We needed a bridge between reflection and action, between insight and implementation.</p>
-                <p>Virgil is that bridge. It's the tool I wish I'd had during my own growth journey, and I'm grateful to share it with you.</p>
+                <p>After years of therapy and coaching and other personal development modalities, I had notebooks full of insights but no system to turn them into lasting change. I'd leave sessions feeling enlightened, only to forget everything by the next week.</p>
+                <p>I realized the problem wasn't the quality of the work I was doing, it was the lack of infrastructure to support it. I needed a bridge between reflection and action, between insight and implementation.</p>
+                <p>Virgil is that bridge. It's the tool I need for my own growth journey, and I'm grateful to share it with you.</p>
               </div>
               <div className="mt-8 pt-6 border-t border-slate-200">
                 <p style={{ fontFamily: "'Playfair Display', serif" }} className="text-xl text-slate-900 mb-1">Lindsey Navia</p>
