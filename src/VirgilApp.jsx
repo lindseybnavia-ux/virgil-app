@@ -1475,11 +1475,11 @@ const removeSyncedEvent = async (todoId) => {
                             )}
                          </div>
                           {session.coreTheme && (
-                            <div className="flex items-start gap-2 mt-2 mb-1">
-                              <span className="flex-shrink-0 px-2.5 py-1 bg-purple-50 border border-purple-200 text-purple-800 rounded-full text-xs font-semibold uppercase tracking-wide">Core Theme</span>
-                              <p className="text-sm text-slate-600 pt-0.5">{session.coreTheme}</p>
-                            </div>
-                          )}
+  <div className="mt-2 mb-1">
+    <span className="inline-block px-2.5 py-1 bg-purple-50 border border-purple-200 text-purple-800 rounded-full text-xs font-semibold uppercase tracking-wide mb-1">Core Theme</span>
+    <p className="text-sm text-slate-600">{session.coreTheme}</p>
+  </div>
+)}
                           <p className="text-gray-500 text-sm">{(() => {
                             const [year, month, day] = session.date.split('-');
                             const date = new Date(year, month - 1, day);
