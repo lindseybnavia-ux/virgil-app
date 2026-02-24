@@ -515,8 +515,8 @@ export default function LandingPage({ onGetStarted, onNavigate }) {
             <div>
               <h4 className="font-semibold text-slate-900 mb-4">Legal</h4>
               <ul className="space-y-2">
-                <li><button onClick={() => onNavigate('privacy')} className="text-slate-600 hover:text-slate-900 text-sm">Privacy Policy</button></li>
-                <li><button onClick={() => onNavigate('terms')} className="text-slate-600 hover:text-slate-900 text-sm">Terms of Service</button></li>
+                <li><a href="/privacy.html" className="text-slate-600 hover:text-slate-900 text-sm">Privacy Policy</a></li>
+                <li><a href="/terms.html" className="text-slate-600 hover:text-slate-900 text-sm">Terms of Service</a></li>
               </ul>
             </div>
           </div>
